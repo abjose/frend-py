@@ -1,0 +1,74 @@
+---
+# TODO
+# data to track:
+# - level of intimacy
+# - interest tags
+# - "setting" tag? like if happens at work, etc. - to try to get to know people in more contexts
+# - some hierarchy info? like if it's an instance of another one (like "go to this specific club" vs. "go to a club"
+# - whether it's sustained / can recur
+# 
+# intimacy scale, from 0 to 1
+# 0:    a stranger
+# 0.25: a kind acquaintance
+# 0.5:  a casual friend
+# 0.75: a very close friend
+# 1:    someone you love and trust
+interactions:
+- task: "ask how they're doing"
+  intimacy: 0
+- task: ask advice on book / music / film
+  intimacy: 0
+- task: ask what some of their favorite things to do locally are
+  intimacy: 0
+- task: ask if they share {one of your interests}
+  intimacy: 0.05
+- task: go to a bar
+  intimacy: 0.05
+- task: invite to existing plans
+  intimacy: 0.1
+- task: share something personal
+  intimacy: 0.1
+- task: go get coffee
+  intimacy: 0.1
+- task: ask how one of their projects is going
+  intimacy: 0.15
+- task: ask how one of their close relations is doing
+  intimacy: 0.15
+- task: ask about one of their substantial life events
+  intimacy: 0.15
+- task: play a game together online, remotely
+  intimacy: 0.2
+- task: get them a smaller gift / favor
+  intimacy: 0.2
+- task: go to a restaurant
+  intimacy: 0.25
+- task: discuss fears, flaws, insecurities
+  intimacy: 0.25
+- task: go to a concert
+  intimacy: 0.25
+- task: have a potluck
+  intimacy: 0.25
+- task: go see a film
+  intimacy: 0.3
+- task: go to a museum together
+  intimacy: 0.3
+- task: go hiking together
+  intimacy: 0.3
+- task: play a game together in real life
+  intimacy: 0.35
+- task: start reading a book together (potentially with others)
+  intimacy: 0.4
+- task: take a class together
+  intimacy: 0.4
+- task: cook together
+  intimacy: 0.45
+- task: learn a new skill together
+  intimacy: 0.5
+- task: start working on a project together
+  intimacy: 0.5
+- task: get them a larger gift / favor
+  intimacy: 0.6
+- task: go on a road trip
+  intimacy: 0.7
+- task: go on a camping trip together
+  intimacy: 0.7
