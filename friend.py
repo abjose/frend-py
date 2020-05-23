@@ -1,8 +1,7 @@
 class Friend:
     def __init__(self, data):
-        self.name = data["name"]  # should enforce uniquness
+        self.name = data["name"]  # should enforce uniqueness
         self.intimacy = float(data["intimacy"])
-        # self.next_event_
         self.events = []
 
     def __str__(self):

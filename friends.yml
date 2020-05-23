@@ -1,5 +1,6 @@
-friends:
-- name: kino
+- events: []
   intimacy: 0.4
-- name: woofo
+  name: kino
+- events: []
   intimacy: 0.1
+  name: woofo
