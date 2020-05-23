@@ -1,91 +1,72 @@
-import yaml
 import bisect
 
-class Friend:
-    def __init__(self, data):
-        self.name = data["name"]
-        self.intimacy = float(data["intimacy"])
+from utils import load, save
+from friend import Friend
+from frend_calendar import Event, Calendar
+from interaction import Interaction
 
-    def __str__(self):
-        return f"Friend ({self.intimacy}): {self.name}"
-
-class Interaction:
-    def __init__(self, data):
-        self.task = data["task"]
-        self.intimacy = data["intimacy"]
-        if self.intimacy is not None: self.intimacy = float(self.intimacy)
-
-    def __lt__(self, other):
-        if self.intimacy is None or other.intimacy is None:
-            print(f"1: {self}")
-            print(f"2: {other}")
-            response = input("Is 1 more intimate than 2? (y/n): ")
-            return response != "y"  # brittle
-        return self.intimacy < other.intimacy
-        
-    def __str__(self):
-        intimacy_str = ""
-        # if self.intimacy is not None:
-        #     intimacy_str = f" (intimacy {self.intimacy})"
-        return f"{self.task}" + intimacy_str
-
-class Event:
-    def __init__(self):
-        # just a date and an interaction?
-        pass1
+""" TODO
+- add config file with stuff like:
+  - start, min, max rescheduling times
+  - what 01/01/11 means (see parser docs) for get_date_from_user
+"""
 
 class Frend:
     def __init__(self):
-        self.friends = []
-        self.interactions = []  # sorted by increasing intimacy
+        # self.friends = []  # friend name => Friend
+        # self.interactions = []  # sorted by increasing intimacy
+        # self.calendar = []
+        self.load()
 
-    def add_interaction(self, interaction):
-        pass
+    def run(self):
+        for due_event in self.calendar.get_due_events():
+            self.complete_event(due_event)
 
-    def load():
-        self.friends = load("friends", Friend)
+        for unscheduled_friend in self.calendar.get_unscheduled_friends(self.friends.values()):
+            self.schedule_interaction(unscheduled_friend)
+
+        # save and exit
+        self.save()
+
+    def complete_event(self, event):
+        # while doing this should set a field for next time to schedule an event
+        # need to record response for each friend involved!
+        # how to implement "backoff"?
+        # what to start with?
+        # could start with some value (say, 7 days)
+        # on positive responses, move towards "min" value
+        # on negative responses, move towards "max" value
+        # maybe leave this as a TODO?
+        print("completing!", event)
+
+    def schedule_interaction(self, friend):
+        # call this
+        # look up friend
+
+        # should suggest a few possibilities
+        # including a "stretch" option
+        print("scheduling!", friend)
+
+    def load(self):
+        self.friends = dict([(f.intimacy, f) for f in load("friends", Friend)])
+        self.calendar = Calendar(load("calendar", Event))
         self.interactions = load("interactions", Interaction)
         self.interactions.sort(key=lambda e: e.intimacy)
 
-# expects file to be named `name`.yaml
-# expects main data to be in a section called `name`
-def load(name, typename):
-    yaml_data = None
-    with open(name + ".yaml", 'r') as f:
-        try:
-            yaml_data = yaml.safe_load(f)[name]
-        except yaml.YAMLError as exc:
-            print(exc)
-
-    if not yaml_data:
-        print("Couldn't load yaml data from ", filename)
-        return
-            
-    data = []
-    for d in yaml_data:
-        data.append(typename(d))
-        print(data[-1])
-
-    return data
-
-def empty_interaction(task):
-    data = {"task": task, "intimacy": None}
-    return Interaction(data)
-
-# TODO: allow seeding a guessed intimacy level
-def find_intimacy_level(new_interaction, interactions):
-    # return a intimacy level after asking a series of comparison questions
-    blah = bisect.bisect_left(interactions, new_interaction)
-    print(blah)
-    # how to properly set intimacy? really depends on what is on either side of the insertion point
-    # if very similar maybe just do in-between
-    # if very different...
-
-    # can also use this for resetting interaction intimacy levels?
-    # like just insert each thing into the list with a cleared intimacy value
+    def save(self):
+        save("friends", list(self.friends.values()))
+        save("calendar", self.calendar.events)
+        save("interactions", self.interactions)  # will this ever change?
 
 
 if __name__ == "__main__":
-    interactions = load("interactions", Interaction)
-    print("\n\nfinding intimacy level")
-    find_intimacy_level(empty_interaction("goal intimacy for relationship"), interactions)
+    # interactions = load("interactions", Interaction)
+    # print("\n\nfinding intimacy level")
+    # find_intimacy_level(empty_interaction("goal intimacy for relationship"), interactions)
+
+    # print(get_date_from_user())
+
+    # events = load("calendar", Event)
+    # events = load("friends", Friend)
+
+    Frend().run()

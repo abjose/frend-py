@@ -1,0 +1,5 @@
+friends:
+- name: kino
+  intimacy: 0.4
+- name: woofo
+  intimacy: 0.1
