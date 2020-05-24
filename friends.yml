@@ -1,6 +1,8 @@
-- events: []
+- past_events: []
   intimacy: 0.4
+  goal_intimacy: .6
   name: kino
-- events: []
+- past_events: []
   intimacy: 0.1
   name: woofo
+  goal_intimacy: .3

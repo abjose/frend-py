@@ -2,7 +2,8 @@ class Friend:
     def __init__(self, data):
         self.name = data["name"]  # should enforce uniqueness
         self.intimacy = float(data["intimacy"])
-        self.events = []
+        self.goal_intimacy = float(data["goal_intimacy"])
+        self.past_events = data["past_events"]
 
     def __str__(self):
         # return f"Friend ({self.intimacy}): {self.name}"

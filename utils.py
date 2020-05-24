@@ -70,6 +70,18 @@ def find_intimacy_level(new_interaction, interactions):
     # like just insert each thing into the list with a cleared intimacy value
 
 
+# TODO: version that allows selecting multiple options
+def present_options(options):
+    print("Options:")
+    for i in range(len(options)):
+        print(f"{i+1}: {options[i]}")
+    while True:
+        selection = int(input(f"Enter a selection (1-{len(options)}): ")) - 1
+        if 0 <= selection < len(options):
+            return options[selection]
+        print("Invalid selection.")
+
+
 if __name__ == "__main__":
     from frend_calendar import Event
     events = load("calendar", Event)
