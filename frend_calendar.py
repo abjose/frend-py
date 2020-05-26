@@ -26,8 +26,8 @@ class Calendar:
     def __init__(self, events):
         self.events = events
 
-    # sorted by oldest
     def get_due_events(self):
+        # sorted by oldest
         now = datetime.datetime.now()
         return sorted([e for e in self.events if e.datetime <= now], key=lambda e: e.datetime)
 
