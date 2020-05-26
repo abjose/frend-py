@@ -71,6 +71,7 @@ def find_intimacy_level(new_interaction, interactions):
 
 
 # TODO: version that allows selecting multiple options
+# TODO: handle ctrl+c better (in general)
 def present_options(options):
     print("Options:")
     for i in range(len(options)):
@@ -78,9 +79,11 @@ def present_options(options):
     while True:
         selection = int(input(f"Enter a selection (1-{len(options)}): ")) - 1
         if 0 <= selection < len(options):
-            return options[selection]
+            return selection, options[selection]
         print("Invalid selection.")
 
+def clamp(x, low, high):
+    return max(low, min(x, high))
 
 if __name__ == "__main__":
     from frend_calendar import Event

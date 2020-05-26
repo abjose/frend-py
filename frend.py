@@ -20,37 +20,60 @@ class Frend:
         self.load()
 
     def run(self):
-        for due_event in self.calendar.get_due_events():
+        options = [
+            "Add a friend",
+            "Edit a friend",
+            "Add an event",
+            "Edit an event",
+            "Start a new recurring event",
+        ]
+
+        due_events = self.calendar.get_due_events()
+        if len(due_events) > 0:
+            options.append(f"Process due events ({len(due_events)} pending)")
+
+        unscheduled_friends = self.calendar.get_unscheduled_friends(self.friends.values())
+        if len(unscheduled_friends) > 0:
+            options.append(f"Schedule unscheduled friends ({len(unscheduled_friends)} pending)")
+
+        # TODO: don't switch on string values
+        _, selection = present_options(options)
+        if "Process due events" in selection:
+            self.process_due_events(due_events)
+        elif "Schedule unscheduled friends" in selection:
+            self.schedule_unscheduled_friends(unscheduled_friends)
+        else:
+            print("Unhandled selection:", selection)
+
+        # save and loop
+        self.save()
+        self.run()
+
+    def process_due_events(self, due_events):
+        for due_event in due_events:
             self.complete_event(due_event)
 
-        for unscheduled_friend in self.calendar.get_unscheduled_friends(self.friends.values()):
-            self.schedule_interaction(unscheduled_friend)
-
-        # save and exit
-        self.save()
-
     def complete_event(self, event):
-        # while doing this should set a field for next time to schedule an event
-        # need to record response for each friend involved!
-        # how to implement "backoff"?
-        # what to start with?
-        # could start with some value (say, 7 days)
-        # on positive responses, move towards "min" value
-        # on negative responses, move towards "max" value
-        # maybe leave this as a TODO?
-        # should you ask if want to increase or not? but that's the point of setting a goal level
+        print("Collecting data for the following event:")
+        print(event)
         for friend_name in event.friends:
-            self.friends[friend_name].past_events.append(event)
+            self.friends[friend_name].complete_event(event)
         self.calendar.remove_event(event)
 
+    def schedule_unscheduled_friends(self, unscheduled_friends):
+        for unscheduled_friend in unscheduled_friends:
+            self.schedule_interaction(unscheduled_friend)
+
+    # TODO: move this into friend.py?
     def schedule_interaction(self, friend_name):
         print("Scheduling a new event with", friend_name)
         # make "fudge" factors configurable
         friend = self.friends[friend_name]
+        # TODO: take goal intimacy into account
         left_bound = bisect.bisect_left(self.interactions, friend.intimacy - .1)
         right_bound = bisect.bisect_right(self.interactions, friend.intimacy + .1)
         # TODO: allow skipping
-        interaction = present_options(self.interactions[left_bound:right_bound+1])
+        _, interaction = present_options(self.interactions[left_bound:right_bound+1])
         print("choice:", interaction)
         # TODO: come up with a suggested date (see notes in complete_event)
         date = get_date_from_user()
@@ -71,13 +94,4 @@ class Frend:
 
 
 if __name__ == "__main__":
-    # interactions = load("interactions", Interaction)
-    # print("\n\nfinding intimacy level")
-    # find_intimacy_level(empty_interaction("goal intimacy for relationship"), interactions)
-
-    # print(get_date_from_user())
-
-    # events = load("calendar", Event)
-    # events = load("friends", Friend)
-
     Frend().run()
