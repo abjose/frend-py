@@ -95,8 +95,10 @@ def present_options(options):
             return selection, options[selection]
         print("Invalid selection.")
 
+
 def clamp(x, low, high):
     return max(low, min(x, high))
+
 
 if __name__ == "__main__":
     from frend_calendar import Event

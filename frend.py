@@ -45,7 +45,9 @@ class Frend:
         elif "Schedule unscheduled friends" in selection:
             self.schedule_unscheduled_friends(unscheduled_friends)
         elif "Add a friend" == selection:
-            self.add_new_friend()
+            self.add_friend()
+        elif "Edit a friend" == selection:
+            self.edit_friend()
         else:
             print("Unhandled selection:", selection)
 
@@ -68,7 +70,7 @@ class Frend:
         for unscheduled_friend in unscheduled_friends:
             self.schedule_interaction(unscheduled_friend)
 
-    def add_new_friend(self):
+    def add_friend(self):
         # TODO: replace explicit friend level choice with binary interaction search?
         name = input("What's their name?: ")
         data = {
@@ -79,6 +81,11 @@ class Frend:
         }
         self.friends[name] = Friend(data)
         print(f"Successfully added {name}")
+
+    def edit_friend(self):
+        print("Which friend would you like to edit?")
+        _, friend_name = present_options(list(self.friends.values()))
+        # TODO, though maybe just have them edit the text file
 
     # TODO: move this into friend.py?
     def schedule_interaction(self, friend_name):
