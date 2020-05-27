@@ -1,6 +1,6 @@
 import bisect
 
-from utils import load, save, present_options
+from utils import load, save, present_options, query_friendship_level
 from friend import Friend
 from frend_calendar import Event, Calendar, get_date_from_user
 from interaction import Interaction
@@ -20,13 +20,7 @@ class Frend:
         self.load()
 
     def run(self):
-        options = [
-            "Add a friend",
-            "Edit a friend",
-            "Add an event",
-            "Edit an event",
-            "Start a new recurring event",
-        ]
+        options = []
 
         due_events = self.calendar.get_due_events()
         if len(due_events) > 0:
@@ -36,12 +30,22 @@ class Frend:
         if len(unscheduled_friends) > 0:
             options.append(f"Schedule unscheduled friends ({len(unscheduled_friends)} pending)")
 
+        options += [
+            "Add a friend",
+            "Edit a friend",
+            "Add an event",
+            "Edit an event",
+            "Start a new recurring event",
+        ]
+
         # TODO: don't switch on string values
         _, selection = present_options(options)
         if "Process due events" in selection:
             self.process_due_events(due_events)
         elif "Schedule unscheduled friends" in selection:
             self.schedule_unscheduled_friends(unscheduled_friends)
+        elif "Add a friend" == selection:
+            self.add_new_friend()
         else:
             print("Unhandled selection:", selection)
 
@@ -63,6 +67,18 @@ class Frend:
     def schedule_unscheduled_friends(self, unscheduled_friends):
         for unscheduled_friend in unscheduled_friends:
             self.schedule_interaction(unscheduled_friend)
+
+    def add_new_friend(self):
+        # TODO: replace explicit friend level choice with binary interaction search?
+        name = input("What's their name?: ")
+        data = {
+            "name": name,
+            "intimacy": query_friendship_level("About how well do you  know {name}?"),
+            "goal_intimacy": query_friendship_level("How well would you like to know {name}?"),
+            "past_events": [],
+        }
+        self.friends[name] = Friend(data)
+        print(f"Successfully added {name}")
 
     # TODO: move this into friend.py?
     def schedule_interaction(self, friend_name):

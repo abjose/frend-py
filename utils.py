@@ -70,6 +70,19 @@ def find_intimacy_level(new_interaction, interactions):
     # like just insert each thing into the list with a cleared intimacy value
 
 
+def query_friendship_level(question=None):
+    if question: print(question)
+    levels = {
+        "a stranger": 0,
+        "a kind acquaintance": 0.25,
+        "a casual friend": 0.5,
+        "a very close friend": 0.75,
+        "someone you love and trust": 1,
+    }
+    _, choice = present_options(list(levels.keys()))
+    return levels[choice]
+
+
 # TODO: version that allows selecting multiple options
 # TODO: handle ctrl+c better (in general)
 def present_options(options):
