@@ -1,7 +1,7 @@
 import datetime
 
 from utils import load
-from dateutil import parser as date_parser
+import parsedatetime
 from interaction import Interaction
 
 
@@ -49,14 +49,17 @@ class Calendar:
 
 def get_date_from_user():
     # TODO: allow aborting
-    # TODO: have relative dates like "1 week"
+    # TODO: only allow future dates?
+    cal = parsedatetime.Calendar()
     while True:
         try:
-            return date_parser.parse(input("Enter date: "))
+            time_struct, parse_status = cal.parse(input("Enter date or interval: "))
+            return datetime.datetime(*time_struct[:6])
+        except KeyboardInterrupt:
+            return datetime.datetime.now()  # ehh
         except:
             print("Couldn't parse the date, try again")
 
 
 if __name__ == "__main__":
-    print("woof")
-    events = load("calendar", Event)
+    print(get_date_from_user())

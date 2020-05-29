@@ -10,6 +10,7 @@ from interaction import Interaction
   - start, min, max rescheduling times
   - what 01/01/11 means (see parser docs) for get_date_from_user
   - "fudge" factors in schedule_interactions (for left and right intimacy bound)
+- add comments to things so hideshow works better
 """
 
 class Frend:
@@ -86,6 +87,7 @@ class Frend:
         print("Which friend would you like to edit?")
         _, friend_name = present_options(list(self.friends.values()))
         # TODO, though maybe just have them edit the text file
+        pass
 
     # TODO: move this into friend.py?
     def schedule_interaction(self, friend_name):
