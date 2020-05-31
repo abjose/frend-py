@@ -15,6 +15,9 @@ def load(name, typename):
         print("Couldn't load yaml data from ", name)
         return
 
+    if typename is None:
+        return yaml_data
+
     data = []
     for d in yaml_data:
         data.append(typename(d))
