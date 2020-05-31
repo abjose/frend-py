@@ -21,9 +21,17 @@
 - intimacy: 0.15
   task: ask how one of their close relations is doing
 - intimacy: 0.15
+  task: go to a comedy show
+- intimacy: 0.15
   task: ask about one of their substantial life events
 - intimacy: 0.2
   task: play a game together online, remotely
+- intimacy: 0.2
+  task: watch youtube together
+- intimacy: 0.2
+  task: do yoga together
+- intimacy: 0.2
+  task: take an exercise class together
 - intimacy: 0.2
   task: get them a smaller gift / favor
 - intimacy: 0.25
@@ -31,7 +39,11 @@
 - intimacy: 0.25
   task: discuss fears, flaws, insecurities
 - intimacy: 0.25
+  task: go to an open mic night
+- intimacy: 0.25
   task: go to a concert
+- intimacy: 0.25
+  task: go to a festival
 - intimacy: 0.25
   task: have a potluck
 - intimacy: 0.3
@@ -39,15 +51,23 @@
 - intimacy: 0.3
   task: go to a museum together
 - intimacy: 0.3
+  task: go to a bookstore together
+- intimacy: 0.35
   task: go hiking together
 - intimacy: 0.35
+  task: explore a part of your neighborhood / town / city together
+- intimacy: 0.35
   task: play a game together in real life
+- intimacy: 0.35
+  task: volunteer together
 - intimacy: 0.4
   task: start reading a book together (potentially with others)
 - intimacy: 0.4
   task: take a class together
+- intimacy: 0.4
+  task: go to a convention together
 - intimacy: 0.45
-  task: cook together
+  task: cook / bake together
 - intimacy: 0.5
   task: learn a new skill together
 - intimacy: 0.5
