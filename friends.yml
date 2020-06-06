@@ -38,3 +38,10 @@
     ? veganism
   dislikes: !!set
     ? cops
+- !Friend
+  name: me
+  likes: !!set
+    ? anarchism
+    ? veganism
+  dislikes: !!set
+    ? cops
