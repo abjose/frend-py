@@ -6,13 +6,10 @@ from interaction import Interaction
 
 
 class Event:
-    def __init__(self, data):
-        self.friends = data["friends"]  # TODO: validate friends exist :(
-        self.datetime = data["datetime"]
-        if type(data["interaction"]) is dict:
-            self.interaction = Interaction(data["interaction"])
-        else:  # eugh
-            self.interaction = data["interaction"]
+    def __init__(self, friends, datetime, interaction):
+        self.friends = friends  # TODO: validate friends exist :(
+        self.datetime = datetime
+        self.interaction = interaction
 
     def __eq__(self, other):
         return (self.friends == other.friends and self.datetime == other.datetime and
@@ -39,10 +36,7 @@ class Calendar:
         return [f.name for f in friends if f.name not in scheduled_friends]
 
     def schedule_event(self, friends, date, interaction):
-        data = {"friends": [f.name for f in friends],
-                "datetime": date,
-                "interaction": interaction}
-        self.events.append(Event(data))
+        self.events.append([f.name for f in friends], date, interaction)
 
     def remove_event(self, event):
         self.events.remove(event)

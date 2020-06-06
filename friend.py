@@ -2,15 +2,16 @@ from utils import clamp
 
 
 class Friend:
-    def __init__(self, data):
-        self.name = data["name"]  # should enforce uniqueness
-        self.intimacy = float(data["intimacy"])
-        self.goal_intimacy = float(data["goal_intimacy"])
-        self.past_events = data["past_events"]
+    def __init__(self, name, intimacy, goal_intimacy, past_events,
+                 likes, dislikes):
+        self.name = name  # TODO: should enforce uniqueness
+        self.intimacy = float(intimacy)
+        self.goal_intimacy = float(goal_intimacy)
+        self.past_events = past_events
 
         # For now these are just "interests" tags.
-        self.likes = set(data["likes"])
-        self.dislikes = set(data["dislikes"])
+        self.likes = set(likes)
+        self.dislikes = set(dislikes)
 
     def __str__(self):
         return f"{self.name}"

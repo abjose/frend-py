@@ -25,6 +25,8 @@
 - !Interaction
   task: go get coffee
   intimacy: 0.1
+  dislikes: !!set
+    ? recurring
 - !Interaction
   task: ask how one of their projects is going
   intimacy: 0.15

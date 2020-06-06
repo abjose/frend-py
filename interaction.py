@@ -15,11 +15,10 @@ intimacy scale, from 0 to 1
 """
 
 class Interaction:
-    def __init__(self, data):
-        self.task = data["task"]
-        self.intimacy = data["intimacy"]
-        if self.intimacy is not None:
-            self.intimacy = float(self.intimacy)
+    def __init__(self, task, intimacy, tags):
+        self.task = task
+        self.intimacy = intimacy
+        self.tags = set(tags)
 
     def __lt__(self, other):
         other_intimacy = other if type(other) is float else other.intimacy
