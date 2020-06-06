@@ -107,9 +107,9 @@ class Frend:
         self.calendar.schedule_event([friend], date, interaction)
 
     def load(self):
-        self.friends = dict([(f.name, f) for f in load("friends", Friend)])
-        self.calendar = Calendar(load("calendar", Event))
-        self.interactions = load("interactions", Interaction)
+        self.friends = dict([(f.name, f) for f in load("friends.yml")])
+        self.calendar = Calendar(load("calendar.yml"))
+        self.interactions = load("interactions.yml")
         self.interactions.sort(key=lambda e: e.intimacy)
 
     def save(self):

@@ -1,80 +1,120 @@
-- intimacy: 0.0
+- !Interaction
   task: ask how they're doing
-- intimacy: 0.0
+  intimacy: 0.0
+- !Interaction
   task: ask advice on book / music / film
-- intimacy: 0.0
+  intimacy: 0.0
+- !Interaction
   task: ask what some of their favorite things to do locally are
-- intimacy: 0.0
+  intimacy: 0.0
+- !Interaction
   task: share something you think is interesting
-- intimacy: 0.05
+  intimacy: 0.0
+- !Interaction
   task: ask if they share {one of your interests}
-- intimacy: 0.05
+  intimacy: 0.05
+- !Interaction
   task: go to a bar
-- intimacy: 0.1
+  intimacy: 0.05
+- !Interaction
   task: invite to existing plans
-- intimacy: 0.1
+  intimacy: 0.1
+- !Interaction
   task: share something personal (like a quirk, a dream for the future, a secret wish...)
-- intimacy: 0.1
+  intimacy: 0.1
+- !Interaction
   task: go get coffee
-- intimacy: 0.15
+  intimacy: 0.1
+- !Interaction
   task: ask how one of their projects is going
-- intimacy: 0.15
+  intimacy: 0.15
+- !Interaction
   task: ask how one of their close relations is doing
-- intimacy: 0.15
+  intimacy: 0.15
+- !Interaction
   task: go to a comedy show
-- intimacy: 0.15
+  intimacy: 0.15
+- !Interaction
   task: ask about one of their substantial life events
-- intimacy: 0.2
+  intimacy: 0.15
+- !Interaction
   task: play a game together online, remotely
-- intimacy: 0.2
+  intimacy: 0.2
+- !Interaction
   task: watch youtube together
-- intimacy: 0.2
+  intimacy: 0.2
+- !Interaction
   task: do yoga together
-- intimacy: 0.2
+  intimacy: 0.2
+- !Interaction
   task: take an exercise class together
-- intimacy: 0.2
+  intimacy: 0.2
+- !Interaction
   task: get them a smaller gift / favor
-- intimacy: 0.25
+  intimacy: 0.2
+- !Interaction
   task: go to a restaurant
-- intimacy: 0.25
+  intimacy: 0.25
+- !Interaction
   task: discuss fears, flaws, insecurities
-- intimacy: 0.25
+  intimacy: 0.25
+- !Interaction
   task: go to an open mic night
-- intimacy: 0.25
+  intimacy: 0.25
+- !Interaction
   task: go to a concert
-- intimacy: 0.25
+  intimacy: 0.25
+- !Interaction
   task: go to a festival
-- intimacy: 0.25
+  intimacy: 0.25
+- !Interaction
   task: have a potluck
-- intimacy: 0.3
+  intimacy: 0.25
+- !Interaction
   task: go see a film
-- intimacy: 0.3
+  intimacy: 0.3
+- !Interaction
   task: go to a museum together
-- intimacy: 0.3
+  intimacy: 0.3
+- !Interaction
   task: go to a bookstore together
-- intimacy: 0.35
+  intimacy: 0.3
+- !Interaction
   task: go hiking together
-- intimacy: 0.35
+  intimacy: 0.35
+- !Interaction
   task: explore a part of your neighborhood / town / city together
-- intimacy: 0.35
+  intimacy: 0.35
+- !Interaction
   task: play a game together in real life
-- intimacy: 0.35
+  intimacy: 0.35
+- !Interaction
   task: volunteer together
-- intimacy: 0.4
+  intimacy: 0.35
+- !Interaction
   task: start reading a book together (potentially with others)
-- intimacy: 0.4
+  intimacy: 0.4
+- !Interaction
   task: take a class together
-- intimacy: 0.4
+  intimacy: 0.4
+- !Interaction
   task: go to a convention together
-- intimacy: 0.45
+  intimacy: 0.4
+- !Interaction
   task: cook / bake together
-- intimacy: 0.5
+  intimacy: 0.45
+- !Interaction
   task: learn a new skill together
-- intimacy: 0.5
+  intimacy: 0.5
+- !Interaction
   task: start working on a project together
-- intimacy: 0.6
+  intimacy: 0.5
+- !Interaction
   task: get them a larger gift / favor
-- intimacy: 0.7
+  intimacy: 0.6
+- !Interaction
   task: go on a road trip
-- intimacy: 0.7
+  intimacy: 0.7
+- !Interaction
   task: go on a camping trip together
+  intimacy: 0.7

@@ -1,63 +1,31 @@
-import yaml
+import ruamel.yaml
 
 
-# expects file to be named `name`.yml
-# expects main data to be in a section called `name`
-def load(name, typename):
-    yaml_data = None
-    with open(name + ".yml", 'r') as f:
+def registered_yaml():
+    # for registering with yaml
+    # alternately could apss class along and register it right before loading / dumping
+    from friend import Friend
+    from frend_calendar import Event
+    from interaction import Interaction
+
+    yaml = ruamel.yaml.YAML()
+    yaml.register_class(Friend)
+    yaml.register_class(Event)
+    yaml.register_class(Interaction)
+    return yaml
+
+
+def load(filename):
+    with open(filename, 'r') as f:
         try:
-            yaml_data = yaml.safe_load(f)
-        except yaml.YAMLError as exc:
+            return registered_yaml().load(f)
+        except ruamel.yaml.YAMLError as exc:
             print(exc)
-
-    if not yaml_data:
-        print("Couldn't load yaml data from ", name)
-        return
-
-    if typename is None:
-        return yaml_data
-
-    data = []
-    for d in yaml_data:
-        data.append(typename(d))
-
-    return data
 
 
 def save(filename, data):
     with open(f"{filename}.yml", 'w') as outfile:
-        dump = yaml.dump(data)
-        outfile.write(strip_python_tags(dump))
-
-
-# TODO: make use of yaml type tags?
-# https://stackoverflow.com/a/55828059
-def strip_python_tags(s):
-    tag = "!!python/"
-    result = []
-    lines = s.splitlines()
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        idx = line.find(tag)
-        if idx > -1:
-            # dumb check to see if we want to pull up the next line
-            line = line[:idx]
-            if ": " in line:
-                line = line[:-1]
-            else:
-                # TODO: bounds checking (though shouldn't be an issue)
-                line += lines[i+1].strip()
-                i += 1  # skip the next line
-        result.append(line)
-        i += 1
-    return '\n'.join(result)
-
-
-# def empty_interaction(task):
-#     data = {"task": task, "intimacy": None}
-#     return Interaction(data)
+        dump = registered_yaml().dump(data, stream=outfile)
 
 
 # TODO: allow seeding a guessed intimacy level

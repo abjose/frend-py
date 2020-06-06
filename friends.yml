@@ -1,8 +1,40 @@
-- past_events: []
-  intimacy: 0.4
-  goal_intimacy: .6
+- !Friend
   name: kino
-- past_events: []
-  intimacy: 0.1
-  name: woofo
-  goal_intimacy: .3
+  intimacy: 1.0
+  goal_intimacy: 1.0
+  past_events: []
+  likes: !!set
+    ? food
+    ? pets
+  dislikes: !!set
+    ? baths
+- !Friend
+  name: E
+  intimacy: 0.5
+  goal_intimacy: 0.65
+  past_events: []
+  likes: !!set
+    ? nonfiction
+    ? machine learning
+  dislikes: !!set {}
+- !Friend
+  name: C
+  intimacy: 0.65
+  goal_intimacy: 0.8
+  past_events: []
+  likes: !!set
+    ? roleplaying games
+    ? poetry
+    ? language
+  dislikes: !!set
+    ? squares
+- !Friend
+  name: Y
+  intimacy: 0.65
+  goal_intimacy: 0.8
+  past_events: []
+  likes: !!set
+    ? anarchism
+    ? veganism
+  dislikes: !!set
+    ? cops
