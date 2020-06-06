@@ -5,7 +5,7 @@ def registered_yaml():
     # for registering with yaml
     # alternately could apss class along and register it right before loading / dumping
     from friend import Friend
-    from frend_calendar import Event
+    from event import Event
     from interaction import Interaction
 
     yaml = ruamel.yaml.YAML()
@@ -16,7 +16,7 @@ def registered_yaml():
 
 
 def load(filename):
-    with open(filename, 'r') as f:
+    with open(f"{filename}.yml", 'r') as f:
         try:
             return registered_yaml().load(f)
         except ruamel.yaml.YAMLError as exc:

@@ -2,7 +2,7 @@ import bisect
 
 from utils import load, save, present_options, query_friendship_level
 from friend import Friend
-from frend_calendar import Event, Calendar, get_date_from_user
+from event import Event, Calendar, get_date_from_user
 from interaction import Interaction
 
 """ TODO
@@ -107,14 +107,14 @@ class Frend:
         self.calendar.schedule_event([friend], date, interaction)
 
     def load(self):
-        self.friends = dict([(f.name, f) for f in load("friends.yml")])
-        self.calendar = Calendar(load("calendar.yml"))
-        self.interactions = load("interactions.yml")
+        self.friends = dict([(f.name, f) for f in load("friends")])
+        self.calendar = Calendar(load("events"))
+        self.interactions = load("interactions")
         self.interactions.sort(key=lambda e: e.intimacy)
 
     def save(self):
         save("friends", list(self.friends.values()))
-        save("calendar", self.calendar.events)
+        save("events", self.calendar.events)
         save("interactions", self.interactions)  # will this ever change?
 
 
