@@ -1,11 +1,12 @@
 from utils import load
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.shortcuts import CompleteStyle, prompt
+from ruamel.yaml.comments import CommentedMap
 
 
 class Interests:
     def __init__(self):
-        self.interests = load("interests", None)
+        self.interests = load("interests")
         self.word_completer = WordCompleter(flatten_interests(self.interests),
                                             sentence=True,
                                             match_middle=True,
@@ -13,12 +14,12 @@ class Interests:
 
     def query_for_interest(self):
         return prompt(
-            "Add an interest: ", completer=self.word_completer,
+            "Pick an interest: ", completer=self.word_completer,
             complete_while_typing=True,
             complete_style=CompleteStyle.MULTI_COLUMN,
         )
-                
-    
+
+
 # Interests is a weird nested list-of-dicts because of bad yaml. Probably should
 # make yaml better formatted, but it "reads" nicely the way it is.
 # also should add non-root nodes too
@@ -29,7 +30,7 @@ def flatten_interests(node, chain="", current_list=[]):
         return chain + " / " + name
 
     for child in node:
-        if type(child) is dict:
+        if type(child) is CommentedMap:
             # if a dict, will map to a list of (possibly a combination) of more
             # dicts and leaf nodes
             keys = list(child.keys())
