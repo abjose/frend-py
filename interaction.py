@@ -44,3 +44,23 @@ class Interaction:
         if self.intimacy is not None:
             intimacy_str = f" ({self.intimacy})"
         return f"{self.task}" + intimacy_str
+
+
+if __name__ == "__main__":
+    # quick tool to populate interest tags, should integrate into Frend
+    from interests import Interests
+    from utils import load, save
+
+    print("Interaction-Popluator")
+    print("Enter nothing to progress to next interaction")
+
+    interests = Interests()
+    interactions = load("interactions")
+    for interaction in interactions:
+        while True:
+            print("Adding tags to:", str(interaction))
+            response = interests.query_for_interest()
+            if response == "":
+                break
+            interaction.tags.add(response)
+            save("interactions", interactions)

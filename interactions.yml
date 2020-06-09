@@ -1,122 +1,209 @@
 - !Interaction
   task: ask how they're doing
-  intimacy: 0.0
+  intimacy: 0.0 ? recurring
 - !Interaction
   task: ask advice on book / music / film
   intimacy: 0.0
+  tags: !!set
+    ? Entertainment / reading
+    ? Entertainment / music
+    ? Entertainment / movies
 - !Interaction
   task: ask what some of their favorite things to do locally are
   intimacy: 0.0
+  tags: !!set
+    ? recurring
 - !Interaction
   task: share something you think is interesting
   intimacy: 0.0
+  tags: !!set
+    ? recurring
 - !Interaction
   task: ask if they share {one of your interests}
   intimacy: 0.05
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go to a bar
   intimacy: 0.05
+  tags: !!set
+    ? Entertainment / live events / Bars
+    ? Food & drink / alcohol
 - !Interaction
   task: invite to existing plans
   intimacy: 0.1
+  tags: !!set
+    ? recurring
 - !Interaction
   task: share something personal (like a quirk, a dream for the future, a secret wish...)
   intimacy: 0.1
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go get coffee
   intimacy: 0.1
-  dislikes: !!set
-    ? recurring
+  tags: !!set
+    ? Food & drink / Restaurants / Coffeehouses
+    ? Food & drink / non-acoholic beverages / coffee
 - !Interaction
   task: ask how one of their projects is going
   intimacy: 0.15
+  tags: !!set
+    ? recurring
 - !Interaction
   task: ask how one of their close relations is doing
   intimacy: 0.15
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go to a comedy show
   intimacy: 0.15
+  tags: !!set
+    ? Arts & Humanities / Theater & Performing Arts / standup comedy
+    ? Arts & Humanities / Theater & Performing Arts / sketch comedy
+    ? Arts & Humanities / Theater & Performing Arts / improv
 - !Interaction
   task: ask about one of their substantial life events
   intimacy: 0.15
+  tags: !!set
+    ? recurring
 - !Interaction
   task: play a game together online, remotely
   intimacy: 0.2
+  tags: !!set
+    ? Entertainment / games
 - !Interaction
   task: watch youtube together
   intimacy: 0.2
+  tags: !!set
+    ? Entertainment / TV / Internet TV
 - !Interaction
   task: do yoga together
   intimacy: 0.2
+  tags: !!set
+    ? Fitness & wellness / yoga
+    ? Hobbies / General hobbies - Indoors / Yoga
 - !Interaction
   task: take an exercise class together
   intimacy: 0.2
+  tags: !!set
+    ? Fitness & wellness
 - !Interaction
   task: get them a smaller gift / favor
   intimacy: 0.2
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go to a restaurant
   intimacy: 0.25
+  tags: !!set
+    ? recurring
+    ? Food & drink / Restaurants
 - !Interaction
   task: discuss fears, flaws, insecurities
   intimacy: 0.25
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go to an open mic night
   intimacy: 0.25
+  tags: !!set
+    ? Entertainment / live events
 - !Interaction
   task: go to a concert
   intimacy: 0.25
+  tags: !!set
+    ? Entertainment / live events / Concerts
 - !Interaction
   task: go to a festival
   intimacy: 0.25
+  tags: !!set
+    ? Entertainment / live events / Music festivals
 - !Interaction
   task: have a potluck
   intimacy: 0.25
+  tags: !!set
+    ? Food & drink / cooking
+    ? Hobbies / General hobbies - Indoors / Cooking
 - !Interaction
   task: go see a film
   intimacy: 0.3
+  tags: !!set
+    ? Entertainment / movies
 - !Interaction
   task: go to a museum together
   intimacy: 0.3
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go to a bookstore together
   intimacy: 0.3
+  tags: !!set
+    ? Entertainment / reading
 - !Interaction
   task: go hiking together
   intimacy: 0.35
+  tags: !!set
+    ? Hobbies / General Hobbies - Outdoors / Hiking
 - !Interaction
   task: explore a part of your neighborhood / town / city together
   intimacy: 0.35
+  tags: !!set
+    ? recurring
 - !Interaction
   task: play a game together in real life
   intimacy: 0.35
+  tags: !!set
+    ? Entertainment / games
 - !Interaction
   task: volunteer together
   intimacy: 0.35
+  tags: !!set
+    ? Politics & social issues / volunteering
 - !Interaction
   task: start reading a book together (potentially with others)
   intimacy: 0.4
+  tags: !!set
+    ? Entertainment / reading
+    ? Hobbies / General hobbies - Indoors / Book discussion clubs
 - !Interaction
   task: take a class together
   intimacy: 0.4
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go to a convention together
   intimacy: 0.4
+  tags: !!set
+    ? recurring
 - !Interaction
   task: cook / bake together
   intimacy: 0.45
+  tags: !!set
+    ? Food & drink / cooking
+    ? Food & drink / cooking / baking
 - !Interaction
   task: learn a new skill together
   intimacy: 0.5
+  tags: !!set
+    ? recurring
 - !Interaction
   task: start working on a project together
   intimacy: 0.5
+  tags: !!set
+    ? recurring
 - !Interaction
   task: get them a larger gift / favor
   intimacy: 0.6
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go on a road trip
   intimacy: 0.7
+  tags: !!set
+    ? recurring
 - !Interaction
   task: go on a camping trip together
   intimacy: 0.7
+  tags: !!set
+    ? Hobbies / General Hobbies - Outdoors / Camping
