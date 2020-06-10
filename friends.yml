@@ -4,8 +4,9 @@
   goal_intimacy: 1.0
   past_events: []
   likes: !!set
-    ? food
-    ? pets
+    ? Hobbies / General hobbies - Indoors / Dogs
+    ? Hobbies / Competitive Hobbies - Outdoors / Dog sport
+    ? Food & drink
   dislikes: !!set
     ? baths
 - !Friend
@@ -14,8 +15,9 @@
   goal_intimacy: 0.65
   past_events: []
   likes: !!set
-    ? nonfiction
-    ? machine learning
+    ? Technology / AI and Robotics / Machine Learning
+    ? Entertainment / music
+    ? Entertainment / reading / non-fiction
   dislikes: !!set {}
 - !Friend
   name: C
@@ -26,6 +28,11 @@
     ? roleplaying games
     ? poetry
     ? language
+    ? Arts & Humanities / Literature
+    ? Arts & Humanities / Poetry
+    ? Technology / AI and Robotics / Machine Learning
+    ? Entertainment / games / roleplaying games
+    ? Hobbies / General hobbies - Indoors / Foreign language learning
   dislikes: !!set
     ? squares
 - !Friend
@@ -36,12 +43,21 @@
   likes: !!set
     ? anarchism
     ? veganism
+    ? Arts & Humanities / Visual Arts / drawing
+    ? Politics & social issues / volunteering
+    ? Politics & social issues / anarchism
+    ? Politics & social issues / social justice
+    ? Politics & social issues / animal welfare
+    ? Food & drink / Food / Veganism
   dislikes: !!set
     ? cops
 - !Friend
   name: me
   likes: !!set
-    ? anarchism
-    ? veganism
+    ? Technology / AI and Robotics
+    ? Food & drink / Food / Veganism
+    ? Food & drink
+    ? Arts & Humanities / Theater & Performing Arts / improv
+    ? Politics & social issues / anarchism
   dislikes: !!set
     ? cops

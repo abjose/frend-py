@@ -49,18 +49,29 @@ class Interaction:
 if __name__ == "__main__":
     # quick tool to populate interest tags, should integrate into Frend
     from interests import Interests
+    from friend import Friend
     from utils import load, save
 
-    print("Interaction-Popluator")
     print("Enter nothing to progress to next interaction")
 
     interests = Interests()
-    interactions = load("interactions")
-    for interaction in interactions:
+
+    # interactions = load("interactions")
+    # for interaction in interactions:
+    #     while True:
+    #         print("Adding tags to:", str(interaction))
+    #         response = interests.query_for_interest()
+    #         if response == "":
+    #             break
+    #         interaction.tags.add(response)
+    #         save("interactions", interactions)
+
+    friends = dict([(f.name, f) for f in load("friends")])
+    for friend_name in friends:
         while True:
-            print("Adding tags to:", str(interaction))
+            print("Adding tags to:", friend_name)
             response = interests.query_for_interest()
             if response == "":
                 break
-            interaction.tags.add(response)
-            save("interactions", interactions)
+            friends[friend_name].likes.add(response)
+            save("friends", list(friends.values()))

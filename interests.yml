@@ -196,8 +196,8 @@
     - Organic food
     - Pizza
     - Seafood
-    - Veganism
-    - Vegetarianism
+    - Vegetarian food
+    - Vegan food
   - alcohol:
     - beer
     - wine
@@ -788,6 +788,7 @@
   - volunteering
   - direct action
   - activism
+  - social justice
 - Religion & Spirituality:
   - Atheist + Agnostic
   - Buddhism
@@ -902,7 +903,6 @@
 - Technology:
   - audiophile
   - hacking
-  - robotics
   - operating systems:
     - linux
     - windows
@@ -914,6 +914,7 @@
   - AI and Robotics:
     - A.I.
     - Futurism
+    - Machine Learning
     - Nanotech
     - Robotics
     - Semiconductors
