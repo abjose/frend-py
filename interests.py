@@ -47,6 +47,19 @@ def flatten_interests(node, chain="", current_list=[]):
     return current_list
 
 
+def query_interests(thing):
+    interests = Interests()  # TODO: cache somewhere
+    new_interests = set()
+    while True:
+        print(f"Adding interest tags for {thing}")
+        print("(Enter nothing to continue)")
+        response = interests.query_for_interest()
+        if response == "":
+            break
+        new_interests.add(response)
+    return new_interests
+
+
 if __name__ == "__main__":
     interests = Interests()
     print(interests.query_for_interest())

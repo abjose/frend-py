@@ -1,4 +1,5 @@
 from utils import clamp
+from interests import query_interests
 
 
 class Friend:
@@ -29,6 +30,15 @@ class Friend:
         # anyone enjoying spending time with you.
         response = input(f"Do you think {self.name} enjoyed this interaction? (y/n): ")
         self.update_intimacy(event, response == "y")
+
+        # Ask about new interests
+        print("Any new interests you learned about?")
+        new_interests = query_interests(self)
+        # TODO: ruamel uses "CommentedSets" which doesn't have update, figure out how to use set instead
+        for new_interest in new_interests:
+            self.likes.add(new_interest)
+
+        # Move to past_events
         self.past_events.append(event)
 
     def update_intimacy(self, event, positive_reponse):
