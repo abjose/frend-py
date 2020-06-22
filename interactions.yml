@@ -1,6 +1,6 @@
 - !Interaction
   task: ask how they're doing
-  intimacy: 0.0 ? recurring
+  intimacy: 0.0
 - !Interaction
   task: ask advice on book / music / film
   intimacy: 0.0
@@ -140,6 +140,11 @@
   intimacy: 0.3
   tags: !!set
     ? Entertainment / reading
+- !Interaction
+  task: invite them over for a meal
+  intimacy: 0.35
+  tags: !!set
+    ? Food & drink
 - !Interaction
   task: go hiking together
   intimacy: 0.35

@@ -32,16 +32,18 @@ class Frend:
             options.append(f"Schedule unscheduled friends ({len(unscheduled_friends)} pending)")
 
         options += [
-            "Add a friend",
-            "Edit a friend",
-            "Add an event",
-            "Edit an event",
+            # "Add a friend",
+            # "Edit a friend",
+            # "Add an event",
+            # "Edit an event",
             "Start a new recurring event",
         ]
 
         # TODO: don't switch on string values
         _, selection = present_options(options)
-        if "Process due events" in selection:
+        if selection is None:
+            print("Bye!")
+        elif "Process due events" in selection:
             self.process_due_events(due_events)
         elif "Schedule unscheduled friends" in selection:
             self.schedule_unscheduled_friends(unscheduled_friends)
@@ -54,7 +56,8 @@ class Frend:
 
         # save and loop
         self.save()
-        self.run()
+        if selection != None:
+            self.run()
 
     def process_due_events(self, due_events):
         for due_event in due_events:
@@ -98,7 +101,10 @@ class Frend:
         left_bound = bisect.bisect_left(self.interactions, friend.intimacy - .1)
         right_bound = bisect.bisect_right(self.interactions, friend.intimacy + .1)
         # TODO: allow skipping
-        _, interaction = present_options(self.interactions[left_bound:right_bound+1])
+        i, interaction = present_options(self.interactions[left_bound:right_bound+1])
+        if i is None:
+            print("Skipping")
+            return
         print("choice:", interaction)
         # TODO: come up with a suggested date (see notes in complete_event)
         date = get_date_from_user()

@@ -29,14 +29,14 @@ class Calendar:
         return sorted([e for e in self.events if e.datetime <= now], key=lambda e: e.datetime)
 
     def get_unscheduled_friends(self, friends):
-        scheduled_friends = set()
+        scheduled_friends = set(["me"])
         for event in self.events:
             scheduled_friends.update(event.friends)
         # actually should you just return the Friend objects here?
         return [f.name for f in friends if f.name not in scheduled_friends]
 
     def schedule_event(self, friends, date, interaction):
-        self.events.append([f.name for f in friends], date, interaction)
+        self.events.append(Event([f.name for f in friends], date, interaction))
 
     def remove_event(self, event):
         self.events.remove(event)

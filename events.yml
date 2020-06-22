@@ -5,3 +5,12 @@
   interaction: !Interaction
     task: ask how one of their projects is going
     intimacy: 0.15
+- !Event
+  friends:
+  - C
+  datetime: 2020-07-01 09:00:00
+  interaction: !Interaction
+    task: go on a camping trip together
+    intimacy: 0.7
+    tags: !!set
+      ? Hobbies / General Hobbies - Outdoors / Camping

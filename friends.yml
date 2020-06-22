@@ -11,7 +11,7 @@
     ? baths
 - !Friend
   name: E
-  intimacy: 0.5
+  intimacy: 0.2
   goal_intimacy: 0.65
   past_events: []
   likes: !!set
@@ -21,7 +21,7 @@
   dislikes: !!set {}
 - !Friend
   name: C
-  intimacy: 0.65
+  intimacy: 0.25
   goal_intimacy: 0.8
   past_events: []
   likes: !!set
@@ -37,7 +37,7 @@
     ? squares
 - !Friend
   name: Y
-  intimacy: 0.65
+  intimacy: 0.3
   goal_intimacy: 0.8
   past_events: []
   likes: !!set

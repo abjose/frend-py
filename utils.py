@@ -61,7 +61,10 @@ def present_options(options):
     for i in range(len(options)):
         print(f"{i+1}: {options[i]}")
     while True:
-        selection = int(input(f"Enter a selection (1-{len(options)}): ")) - 1
+        selection = input(f"Enter a selection (1-{len(options)}), or nothing to abort: ")
+        if selection == "":
+            return None, None
+        selection = int(selection) - 1
         if 0 <= selection < len(options):
             return selection, options[selection]
         print("Invalid selection.")
