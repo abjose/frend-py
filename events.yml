@@ -1,16 +1,28 @@
 - !Event
   friends:
   - kino
-  datetime: 2020-03-19 00:00:00
+  date: 2020-03-19 00:00:00
+  recurring:
   interaction: !Interaction
     task: ask how one of their projects is going
     intimacy: 0.15
 - !Event
   friends:
   - C
-  datetime: 2020-07-01 09:00:00
+  date: 2020-07-01 09:00:00
+  recurring:
   interaction: !Interaction
     task: go on a camping trip together
     intimacy: 0.7
     tags: !!set
       ? Hobbies / General Hobbies - Outdoors / Camping
+- !Event
+  friends:
+  - kino
+  date: 2020-06-28 19:56:16
+  recurring: 0001-01-30 23:59:59.467175
+  interaction: !Interaction
+    task: get them a smaller gift / favor
+    intimacy: 0.2
+    tags: !!set
+      ? recurring

@@ -54,20 +54,32 @@ def query_friendship_level(question=None):
     return levels[choice]
 
 
-# TODO: version that allows selecting multiple options
 # TODO: handle ctrl+c better (in general)
-def present_options(options):
+# TODO: return indices in addition to set when multiple=True to match regular behavior?
+def present_options(options, multiple=False):
+    selected = set()
     print("Options:")
     for i in range(len(options)):
         print(f"{i+1}: {options[i]}")
     while True:
-        selection = input(f"Enter a selection (1-{len(options)}), or nothing to abort: ")
+        if multiple and selected:
+            print("Currently selected:")
+            print("- " + "\n- ".join(map(str, selected)))
+        selection = input(f"Enter a selection (1-{len(options)}), or nothing to stop: ")
         if selection == "":
-            return None, None
+            if not multiple:
+                return None, None
+            return selected
+        if not selection.isdigit():
+            print("Invalid selection.")
+            continue
         selection = int(selection) - 1
         if 0 <= selection < len(options):
-            return selection, options[selection]
-        print("Invalid selection.")
+            if not multiple:
+                return selection, options[selection]
+            selected.add(options[selection])
+        else:
+            print("Invalid selection.")
 
 
 def clamp(x, low, high):
@@ -75,7 +87,5 @@ def clamp(x, low, high):
 
 
 if __name__ == "__main__":
-    from frend_calendar import Event
-    events = load("calendar", Event)
-    print("saving")
-    save("bleh.yaml", events)
+    options = ["woofo", "doggo", "barko"]
+    print(present_options(options, multiple=True))

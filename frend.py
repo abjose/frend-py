@@ -47,10 +47,12 @@ class Frend:
             self.process_due_events(due_events)
         elif "Schedule unscheduled friends" in selection:
             self.schedule_unscheduled_friends(unscheduled_friends)
-        elif "Add a friend" == selection:
+        elif selection == "Add a friend":
             self.add_friend()
-        elif "Edit a friend" == selection:
+        elif selection == "Edit a friend":
             self.edit_friend()
+        elif selection == "Start a new recurring event":
+            self.init_recurring_event()
         else:
             print("Unhandled selection:", selection)
 
@@ -68,7 +70,10 @@ class Frend:
         print(event)
         for friend_name in event.friends:
             self.friends[friend_name].complete_event(event)
-        self.calendar.remove_event(event)
+        if event.recurring:
+            event.recur()
+        else:
+            self.calendar.remove_event(event)
 
     def schedule_unscheduled_friends(self, unscheduled_friends):
         for unscheduled_friend in unscheduled_friends:
@@ -112,6 +117,21 @@ class Frend:
         #       could just ask if they want to add more friends
         self.calendar.schedule_event([friend], date, interaction)
 
+    def friends_without_me(self):
+        return [friend for friend in self.friends.values() if friend.name != "me"]
+
+    def init_recurring_event(self):
+        print("Choose an event")
+        recurring_events = [i for i in self.interactions if "recurring" in i.tags]
+        i, interaction = present_options(recurring_events)
+        print("Choose friend(s)")
+        friend_set = present_options(self.friends_without_me(), multiple=True)
+        print("Choose a date for the first occurrence")
+        date = get_date_from_user()
+        print("Choose interval for recurring (i.e. 1 month, 2 weeks, etc.)")
+        interval = get_date_from_user(interval=True)
+        self.calendar.schedule_event(list(friend_set), date, interaction, interval=interval)
+
     def load(self):
         self.friends = dict([(f.name, f) for f in load("friends")])
         self.calendar = Calendar(load("events"))
@@ -121,7 +141,7 @@ class Frend:
     def save(self):
         save("friends", list(self.friends.values()))
         save("events", self.calendar.events)
-        save("interactions", self.interactions)  # will this ever change?
+        save("interactions", self.interactions)
 
 
 if __name__ == "__main__":
